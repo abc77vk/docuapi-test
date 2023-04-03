@@ -1,0 +1,18 @@
+baseURL: 'https://example.com/'
+module:
+  hugoVersion:
+    min: 0.71.0
+  imports:
+    - path: github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3
+    - path: github.com/olivernn/lunr.js
+      mounts:
+        - source: lunr.js
+          target: assets/js/lib/lunr.js
+    - path: github.com/slatedocs/slate
+      mounts:
+        - source: source/images
+          target: static/images
+        - source: source/fonts
+          target: static/fonts
+        - source: source/stylesheets
+          target: assets/scss/slate
