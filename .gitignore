@@ -6,3 +6,5 @@ assets/jsconfig.json
 .idea/
 exampleSite/resources/_gen/
 resources/_gen/
+# Local Netlify folder
+.netlify

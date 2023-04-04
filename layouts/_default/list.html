@@ -3,7 +3,9 @@
     {{ $tmp := .Content }}
   {{ end }}
   {{ range .Site.RegularPages }}
-    {{ .Content }}
+    {{ if .Params.accessibleWithoutAuth }}
+      {{ .Content }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
@@ -21,6 +23,7 @@
     {{ $maxDepth := $.Site.Params.maxMenuDepth | default 2 }}
     <template x-for="row in rows">
       <li>
+        {{ .Params | jsonify }}
         <a
           x-text="row.title"
           @click="click(row)"

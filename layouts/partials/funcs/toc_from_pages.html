@@ -1,6 +1,7 @@
 {{ $combined := slice }}
 {{ range . }}
   {{ $headers := findRE "<h\\d.*?>(.|\n)*?</h\\d>" .Content }}
+  {{ warnf (.Content | string)}}
   {{ $combined = $combined | append $headers }}
 {{ end }}
 
@@ -14,6 +15,7 @@
 {{ $h3s := slice }}
 
 {{ range $combined }}
+  {{ warnf . }}
   {{ $level := int (substr . 2 1) }}
   {{ if le $level 3 }}
     {{ $idTitle := split (. | replaceRE "<h\\d id=\"(.*?)\">(.*)</h\\d>" "$1|$2") "|" }}

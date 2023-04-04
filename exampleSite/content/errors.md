@@ -1,7 +1,7 @@
 ---
 weight: 20
 title: Errors
-
+accessibleWithoutAuth: true
 ---
 
 # Errors
