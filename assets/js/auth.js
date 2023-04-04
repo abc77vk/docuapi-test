@@ -8,11 +8,16 @@ export async function setupAuth() {
 
     netlifyIdentity.on("init", async () => {
         const user = await netlifyIdentity.currentUser();
+        const authBtn = document.getElementById("auth-btn");
         if (!user) {
-            const authBtn = document.getElementById("auth-btn");
             authBtn.addEventListener("click", () => {
                 netlifyIdentity.open();
-            })
+            });
+        } else {
+            authBtn.innerText = "Logout";
+            authBtn.addEventListener("click", () => {
+                netlifyIdentity.logout();
+            });
         }
     });
 
