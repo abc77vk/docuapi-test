@@ -57,7 +57,7 @@ title = "DocuAPI Example Site"
 
 # Left sidebar footer items. Use HTMl or Markdown.
 toc_footers = [ 
-"<span>Test</test>",
+"<a href='#' onclick=\"alert('test')\">Login</a>",
 ]
 [languages.en.blackfriday]
 angledQuotes = false
