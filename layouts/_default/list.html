@@ -9,13 +9,13 @@
   {{ end }}
 {{ end }}
 
-{{ with .Site.Netlify }}
-{{ with .Identity }}
-{{ with .user }}
-<p>Hello, {{ .email }}!</p>
-{{ end }}
-{{ end }}
-{{ end }}
+{{- with .Site.Data.netlify -}}
+{{- with .identity -}}
+{{- if .isLoggedIn -}}
+<p>Hello, {{ .user.email }}!</p>
+{{- end -}}
+{{- end -}}
+{{- end -}}
 
 {{ define "toc" }}
   {{ $headers := slice }}
