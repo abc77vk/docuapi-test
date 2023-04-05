@@ -8,6 +8,7 @@ export async function setupAuth() {
 
     netlifyIdentity.on("init", async (...args) => {
         console.log(args)
+        netlifyIdentity.open()
         const user = await netlifyIdentity.currentUser();
         const authBtn = document.getElementById("auth-btn");
         if (!user) {

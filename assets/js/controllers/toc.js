@@ -47,9 +47,13 @@ export function newToCController() {
         },
         showHeading: true,
         rows: [],
-        load: function (rows, pages) {
-            console.log({rows})
-            this.rows = rows;
+        load: function (rows) {
+            const user = netlifyIdentity.currentUser();
+            if (!user) {
+                this.rows = rows.filter(r => r.params['allow_anonymous'])
+            } else {
+                this.rows = rows;
+            }
         },
 
         transitions: function () {
@@ -69,7 +73,6 @@ export function newToCController() {
         },
 
         click: function (row) {
-            console.log(this.rows)
             this.rows.forEach((row2) => {
                 setOpenRecursive(row2, (row3) => {
                     return row === row3;

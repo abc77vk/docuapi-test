@@ -3,10 +3,18 @@
     {{ $tmp := .Content }}
   {{ end }}
   {{ range .Site.RegularPages }}
-    {{ if .Params.accessibleWithoutAuth }}
+    {{ if .Params.allow_anonymous }}
       {{ .Content }}
     {{ end }}
   {{ end }}
+{{ end }}
+
+{{ with .Site.Netlify }}
+{{ with .Identity }}
+{{ with .user }}
+<p>Hello, {{ .email }}!</p>
+{{ end }}
+{{ end }}
 {{ end }}
 
 {{ define "toc" }}
@@ -23,7 +31,6 @@
     {{ $maxDepth := $.Site.Params.maxMenuDepth | default 2 }}
     <template x-for="row in rows">
       <li>
-        {{ .Params | jsonify }}
         <a
           x-text="row.title"
           @click="click(row)"
