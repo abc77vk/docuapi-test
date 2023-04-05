@@ -14,8 +14,16 @@
   {{ with .Site.RegularPages }}
     {{ $headers = partial "funcs/toc_from_pages" . }}
   {{ end }}
+  {{ warnf "Params" }}
+  {{ range $key, $value := .Site.Params }}
+    {{ warnf $key }}
+    {{ warnf $value | jsonify | string }}
+  {{ end }}
+
+  {{ warnf "Data" }}
   {{ range $key, $value := .Site.Data }}
     {{ warnf $key }}
+    {{ warnf $value | jsonify | string }}
   {{ end }}
   <ul
     id="toc"
