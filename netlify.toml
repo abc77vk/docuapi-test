@@ -18,14 +18,14 @@ command = "hugo -s exampleSite --minify --gc -b $DEPLOY_PRIME_URL"
 HUGO_VERSION = "0.109.0"
 
 [[redirects]]
+from = "/logged/*"
+to = "/:splat"
+force = true
+status = 302
+
+[[redirects]]
 from = "/"
 to = "/logged"
 force = true
 status = 302
 conditions = {Role = ["user"]}
-
-[[redirects]]
-from = "/logged/*"
-to = "/:splat"
-force = true
-status = 302
