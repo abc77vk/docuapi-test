@@ -24,8 +24,8 @@ status = 200
 conditions = {Role = ["user"]}
 
 [[redirects]]
-from = "/*"
-to = "/logged/:splat"
+from = "/"
+to = "/logged"
 force = true
 status = 200
 conditions = {Role = ["user"]}
