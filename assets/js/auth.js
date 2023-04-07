@@ -6,21 +6,28 @@ export async function setupAuth() {
         resolve();
     });
 
-    netlifyIdentity.on("init", async (...args) => {
-        const user = await netlifyIdentity.currentUser();
-        const authBtn = document.getElementById("auth-btn");
-        if (!user) {
-            authBtn.addEventListener("click", () => {
-                netlifyIdentity.open();
-            });
-        } else {
-            authBtn.innerText = "Logout";
-            authBtn.addEventListener("click", () => {
-                netlifyIdentity.logout();
-                document.location.reload();
-            });
-        }
-    });
+    await new Promise(resolve => {
+        netlifyIdentity.on("init", async (...args) => {
+            try {
+                const user = await netlifyIdentity.currentUser();
+                const authBtn = document.getElementById("auth-btn");
+                if (!user) {
+                    authBtn.addEventListener("click", () => {
+                        netlifyIdentity.open();
+                    });
+                } else {
+                    authBtn.innerText = "Logout";
+                    authBtn.addEventListener("click", () => {
+                        netlifyIdentity.logout();
+                        document.location.reload();
+                    });
+                }
+            } finally {
+                resolve();
+            }
+
+        });
+    })
 
     netlifyIdentity.on("login", (...args) => console.log("login", {args}))
     netlifyIdentity.on("logout", (...args) => console.log("logout", {args}))
