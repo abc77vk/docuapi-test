@@ -16,3 +16,15 @@ command = "hugo -s exampleSite --minify --gc -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy.environment]
 HUGO_VERSION = "0.109.0"
+
+[[redirects]]
+from = "/logged/*"
+force = true
+status = 200
+conditions = {Role = ["user"]}
+
+[[redirects]]
+from = "/logged/*"
+to = "/"
+force = true
+status = 302

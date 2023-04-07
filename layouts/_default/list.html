@@ -14,9 +14,6 @@
   {{ with .Site.RegularPages }}
     {{ $headers = partial "funcs/toc_from_pages" . }}
   {{ end }}
-  {{ range $key, $value := .Site.Data }}
-    {{ warnf $key }}
-  {{ end }}
   <ul
     id="toc"
     class="toc-list-h1"
