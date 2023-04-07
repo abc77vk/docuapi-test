@@ -29,7 +29,4 @@ export async function setupAuth() {
     })
 
     netlifyIdentity.on("login", () => document.location.href = "/logged")
-    netlifyIdentity.on("close", () => document.location.reload());
-
-    //netlifyIdentity.init();
 }
