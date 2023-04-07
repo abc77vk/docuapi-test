@@ -6,6 +6,12 @@ export async function setupAuth() {
         resolve();
     });
 
+    const setPathName = pathName => {
+        if (document.location.pathname !== pathName) {
+            document.location.pathname = pathName;
+        }
+    }
+
     await new Promise(resolve => {
         netlifyIdentity.on("init", async (...args) => {
             try {
@@ -17,11 +23,11 @@ export async function setupAuth() {
                         netlifyIdentity.open();
                     });
                 } else {
-                    document.location.pathname = "/logged";
+                    setPathName("/logged")
                     authBtn.innerText = "Logout";
                     document.getElementById("user-name").innerHTML = `Authenticated as: <b>${user.full_name}</b>`
                     authBtn.addEventListener("click", () => {
-                        netlifyIdentity.logout().then(() => document.location.pathname = "/");
+                        netlifyIdentity.logout().then(() => setPathName("/"));
                     });
                 }
             } finally {
@@ -31,5 +37,5 @@ export async function setupAuth() {
         });
     })
 
-    netlifyIdentity.on("login", () => document.location.pathname = "/logged")
+    netlifyIdentity.on("login", () => setPathName("/logged"))
 }
