@@ -25,7 +25,7 @@ export async function setupAuth() {
                 } else {
                     setPathName("/logged")
                     authBtn.innerText = "Logout";
-                    document.getElementById("user-name").innerHTML = `Authenticated as: <b>${user.full_name}</b>`
+                    document.getElementById("user-name").innerHTML = `Authenticated as: <b>${user.email}</b>`
                     authBtn.addEventListener("click", () => {
                         netlifyIdentity.logout().then(() => setPathName("/"));
                     });
