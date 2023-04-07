@@ -18,7 +18,7 @@ export async function setupAuth() {
                 } else {
                     authBtn.innerText = "Logout";
                     authBtn.addEventListener("click", () => {
-                        netlifyIdentity.logout().then(() => window.location.reload());
+                        netlifyIdentity.logout().then(() => document.location.href = "/");
                     });
                 }
             } finally {
@@ -28,7 +28,7 @@ export async function setupAuth() {
         });
     })
 
-    netlifyIdentity.on("login", (user) => console.log("login", user))
+    netlifyIdentity.on("login", () => document.location.href = "/logged")
     netlifyIdentity.on("close", () => document.location.reload());
 
     //netlifyIdentity.init();
