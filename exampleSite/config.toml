@@ -56,7 +56,9 @@ weight = 2
 title = "DocuAPI Example Site"
 
 # Left sidebar footer items. Use HTMl or Markdown.
-toc_footers = [ 
+toc_footers = [
+"<span id=\"user-name\"></span>",
+"<br/>",
 "<a href='#' id=\"auth-btn\" >Login</a>",
 ]
 [languages.en.blackfriday]
