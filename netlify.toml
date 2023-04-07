@@ -35,3 +35,8 @@ to = "/logged"
 force = true
 status = 302
 conditions = {Role = ["user"]}
+
+[[redirects]]
+from = "/"
+force = true
+status = 200
