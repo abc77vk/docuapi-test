@@ -19,7 +19,12 @@ HUGO_VERSION = "0.109.0"
 
 [[redirects]]
 from = "/logged/*"
-to = "/logged/:splat"
 force = true
 status = 200
 conditions = {Role = ["user"]}
+
+[[redirects]]
+from = "/logged/*"
+to = "/"
+force = true
+status = 302
