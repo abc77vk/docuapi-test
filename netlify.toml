@@ -27,11 +27,11 @@ conditions = {Role = ["user"]}
 from = "/"
 to = "/logged"
 force = true
-status = 200
+status = 302
 conditions = {Role = ["user"]}
 
 [[redirects]]
 from = "/logged/*"
 to = "/:splat"
 force = true
-status = 200
+status = 302
