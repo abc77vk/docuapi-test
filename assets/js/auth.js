@@ -22,8 +22,8 @@ export async function setupAuth() {
         }
     });
 
-    netlifyIdentity.on("login", (...args) => console.log("login", {args}))
-    netlifyIdentity.on("logout", (...args) => console.log("logout", {args}))
+    netlifyIdentity.on("login", () => window.location.reload())
+    netlifyIdentity.on("logout", () => window.location.reload())
 
-    netlifyIdentity.init();
+    //netlifyIdentity.init();
 }
