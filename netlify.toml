@@ -22,10 +22,3 @@ from = "/logged/*"
 force = true
 status = 200
 conditions = {Role = ["user"]}
-
-[[redirects]]
-from = "/"
-to = "/logged"
-force = true
-status = 302
-conditions = {Role = ["user"]}
